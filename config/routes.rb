@@ -1,3 +1,5 @@
 SidekiqMonitoring::Engine.routes.draw do
-  get :status
+  controller :status do
+    get :status
+  end
 end

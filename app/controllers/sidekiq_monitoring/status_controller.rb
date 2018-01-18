@@ -1,7 +1,7 @@
 module SidekiqMonitoring
   class StatusController < ApplicationController
     def status
-      render json: status_data
+      render json: {}#status_data
     end
 
     private
@@ -17,8 +17,8 @@ module SidekiqMonitoring
       {
         whenever_ran: Redis.current.get('monitoring:timestamp:whenever_ran'),
         sidekiq_performed: Redis.current.get('monitoring:timestamp:sidekiq_performed'),
-        requested: Time.now.to_s(:db),
-      },
+        requested: Time.now.to_s(:db)
+      }
     end
 
     def sidekiq_data
