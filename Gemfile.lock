@@ -4,6 +4,7 @@ PATH
     sidekiq_monitoring (0.1.0)
       rails (~> 5.1.4)
       redis
+      sidekiq
 
 GEM
   remote: https://rubygems.org/
@@ -48,6 +49,7 @@ GEM
     arel (8.0.0)
     builder (3.2.3)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
     crass (1.0.3)
     erubi (1.7.0)
     globalid (0.4.1)
@@ -67,6 +69,8 @@ GEM
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     rack (2.0.3)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.1.4)
@@ -94,6 +98,11 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (12.3.0)
     redis (3.3.2)
+    sidekiq (4.2.6)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.2, >= 3.2.1)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
