@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = SidekiqMonitoring::VERSION
   s.authors     = ["Julian Dobmann"]
   s.email       = ["julian@bitcrowd.net"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of SidekiqMonitoring."
-  s.description = "TODO: Description of SidekiqMonitoring."
+  s.homepage    = "http://bitcrowd.net"
+  s.summary     = "Summary of SidekiqMonitoring."
+  s.description = "Description of SidekiqMonitoring."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
