@@ -1,5 +1,6 @@
 require "sidekiq_monitoring/engine"
 
 module SidekiqMonitoring
-  # Your code goes here...
+  mattr_accessor :redis_url
+  @@redis_url = 'redis://localhost:6379/0'
 end

@@ -1,7 +1,10 @@
+require 'redis'
+require 'sidekiq'
+
 module SidekiqMonitoring
   class StatusController < ApplicationController
     def status
-      render json: {}#status_data
+      render json: status_data
     end
 
     private
@@ -15,8 +18,8 @@ module SidekiqMonitoring
 
     def timestamps
       {
-        whenever_ran: Redis.current.get('monitoring:timestamp:whenever_ran'),
-        sidekiq_performed: Redis.current.get('monitoring:timestamp:sidekiq_performed'),
+        whenever_ran: redis.get('monitoring:timestamp:whenever_ran'),
+        sidekiq_performed: redis.get('monitoring:timestamp:sidekiq_performed'),
         requested: Time.now.to_s(:db)
       }
     end
@@ -52,6 +55,16 @@ module SidekiqMonitoring
         retries: sidekiq_stats.retry_size,
         dead: sidekiq_stats.dead_size
       })
+    end
+
+    def redis
+      return @redis if @redis.present?
+      if SidekiqMonitoring.redis_url.present?
+        @redis = Redis.new(url: SidekiqMonitoring.redis_url)
+      else
+        @redis = Redis.new
+      end
+      @redis
     end
   end
 end
