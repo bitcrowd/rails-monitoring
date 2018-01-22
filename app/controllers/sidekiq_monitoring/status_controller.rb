@@ -1,6 +1,3 @@
-require 'redis'
-require 'sidekiq'
-
 module SidekiqMonitoring
   class StatusController < ApplicationController
     def status
