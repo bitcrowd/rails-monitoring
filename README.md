@@ -13,3 +13,5 @@ Schedule job in `whenever`'s `schedule.rb`:
     every 5.minutes do
       runner 'SidekiqMonitoring::Status.refresh'
     end
+
+Be sure that your parent app provides a redis connection via `Redis.current`.
