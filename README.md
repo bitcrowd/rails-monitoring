@@ -14,7 +14,7 @@ Add gem to your project:
 Mount engine in `routes.rb`:
 
     Rails.application.routes.draw do
-      mount SidekiqMonitoring::Engine => "/sidekiq_monitoring"
+      mount SidekiqMonitoring::Engine => '/sidekiq_monitoring'
     end
 
 Schedule job in `whenever`'s `schedule.rb`:
