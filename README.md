@@ -25,9 +25,10 @@ Schedule job in `whenever`'s `schedule.rb`:
 
 Be sure that your parent app provides a redis connection via `Redis.current`.
 
-Provide HTTP basic authentication credentials via initializer
+Provide Redis URL and HTTP basic authentication credentials via initializer
 
     # app/config/initializers/sidekiq_monitoring.rb
+    SidekiqMonitoring.redis_url = 'redis://127.0.0.1:6379/0'
     SidekiqMonitoring.http_auth_name = 'user'
     SidekiqMonitoring.http_auth_password = 'password'
 
