@@ -1,1 +1,2 @@
-SidekiqMonitoring.redis_url = 'redis://localhost:6379/0'
+SidekiqMonitoring.http_auth_name = 'user'
+SidekiqMonitoring.http_auth_password = 'password'

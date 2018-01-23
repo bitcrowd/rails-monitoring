@@ -9,6 +9,8 @@ module SidekiqMonitoring
     setup do
       @routes = Engine.routes
       Timecop.freeze(DateTime.new(2018, 1, 22))
+      @auth = ActionController::HttpAuthentication::Basic
+                .encode_credentials('user', 'password')
     end
 
     teardown do
@@ -18,7 +20,7 @@ module SidekiqMonitoring
     test 'response contains sidekiq status' do
       Sidekiq::Stats.stub(:new, sidekiq_stats_mock) do
         Sidekiq::Stats::History.stub(:new, sidekiq_history_mock) do
-          get status_url
+          get status_url, env: { 'HTTP_AUTHORIZATION' => @auth }
         end
       end
 
@@ -70,7 +72,7 @@ module SidekiqMonitoring
     def get_status
       Sidekiq::Stats.stub(:new, OpenStruct.new(queues: {})) do
         Sidekiq::Stats::History.stub(:new, OpenStruct.new) do
-          get status_url
+          get status_url, env: { 'HTTP_AUTHORIZATION' => @auth }
         end
       end
     end

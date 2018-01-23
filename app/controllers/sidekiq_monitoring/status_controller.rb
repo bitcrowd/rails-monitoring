@@ -1,5 +1,8 @@
 module SidekiqMonitoring
   class StatusController < ApplicationController
+    http_basic_authenticate_with name:     SidekiqMonitoring.http_auth_name,
+                                 password: SidekiqMonitoring.http_auth_password
+
     def status
       render json: status_data
     end
