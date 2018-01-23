@@ -5,7 +5,7 @@ module SidekiqMonitoring
     include ActiveJob::TestHelper
 
     setup do
-      Timecop.travel(DateTime.new(2018, 1, 22))
+      Timecop.freeze(DateTime.new(2018, 1, 22))
     end
 
     teardown do

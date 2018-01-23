@@ -3,7 +3,7 @@ require 'test_helper'
 module SidekiqMonitoring
   class RefreshStatusJobTest < ActiveJob::TestCase
     setup do
-      Timecop.travel(DateTime.new(2018, 1, 22))
+      Timecop.freeze(DateTime.new(2018, 1, 22))
     end
 
     teardown do
