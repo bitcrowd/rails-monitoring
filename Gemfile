@@ -11,4 +11,4 @@ gemspec
 # your gem to rubygems.org.
 
 # To use a debugger
-gem 'pry', group: [:development, :test]
+gem 'pry', group: %i[development test]

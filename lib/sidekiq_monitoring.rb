@@ -1,4 +1,4 @@
-require "sidekiq_monitoring/engine"
+require 'sidekiq_monitoring/engine'
 
 module SidekiqMonitoring
   mattr_accessor :redis_url

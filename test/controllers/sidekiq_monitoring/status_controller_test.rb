@@ -10,7 +10,7 @@ module SidekiqMonitoring
       @routes = Engine.routes
       Timecop.freeze(DateTime.new(2018, 1, 22))
       @auth = ActionController::HttpAuthentication::Basic
-                .encode_credentials('user', 'password')
+              .encode_credentials('user', 'password')
     end
 
     teardown do

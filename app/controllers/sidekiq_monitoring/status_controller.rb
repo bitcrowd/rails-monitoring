@@ -50,11 +50,11 @@ module SidekiqMonitoring
     def sidekiq_queue_sizes
       queue_sizes = sidekiq_stats.queues
 
-      queue_sizes.merge({
+      queue_sizes.merge(
         scheduled: sidekiq_stats.scheduled_size,
         retries: sidekiq_stats.retry_size,
         dead: sidekiq_stats.dead_size
-      })
+      )
     end
   end
 end
