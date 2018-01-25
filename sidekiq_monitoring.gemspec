@@ -11,12 +11,12 @@ Gem::Specification.new do |s|
   s.email       = ['julian@bitcrowd.net']
   s.homepage    = 'https://github.com/bitcrowd/sidekiq-monitoring'
   s.summary     = 'Provide Sidekiq status information via JSON API.'
-  s.description = <<~EOS
+  s.description = <<~TEXT
     Rails engine that provides a JSON API which serves Sidekiq
     status information from a HTTP-auth protected endpoint.
     This status information is gathered by scheduling a frequently
     running job that saves timestamps in Redis.
-  EOS
+  TEXT
   s.license = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
