@@ -109,7 +109,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
     rake (12.3.0)
-    redis (3.3.2)
+    redis (3.3.5)
     rubocop (0.52.1)
       parallel (~> 1.10)
       parser (>= 2.4.0.2, < 3.0)
@@ -155,4 +155,4 @@ DEPENDENCIES
   timecop
 
 BUNDLED WITH
-   1.14.6
+   1.16.0
