@@ -20,7 +20,7 @@ module SidekiqMonitoring
       {
         whenever_ran: Redis.current.get('monitoring:timestamp:whenever_ran'),
         sidekiq_performed: Redis.current.get('monitoring:timestamp:sidekiq_performed'),
-        requested: Time.now.to_s(:db)
+        requested: Time.current.to_s(:db)
       }
     end
 
@@ -28,14 +28,8 @@ module SidekiqMonitoring
       {
         active_workers: sidekiq_stats.workers_size,
         queue_sizes: sidekiq_queue_sizes,
-        recent_history: {
-          processed: sidekiq_history.processed,
-          failed: sidekiq_history.failed
-        },
-        totals: {
-          processed: sidekiq_stats.processed,
-          failed: sidekiq_stats.failed
-        }
+        recent_history: recent_history,
+        totals: totals
       }
     end
 
@@ -45,6 +39,20 @@ module SidekiqMonitoring
 
     def sidekiq_history
       @sidekiq_history ||= Sidekiq::Stats::History.new(5)
+    end
+
+    def recent_history
+      {
+        processed: sidekiq_history.processed,
+        failed: sidekiq_history.failed
+      }
+    end
+
+    def totals
+      {
+        processed: sidekiq_stats.processed,
+        failed: sidekiq_stats.failed
+      }
     end
 
     def sidekiq_queue_sizes

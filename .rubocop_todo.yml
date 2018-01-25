@@ -7,55 +7,9 @@
 # versions of RuboCop, may require this file to be generated again.
 
 # Offense count: 1
-Lint/UselessAssignment:
-  Exclude:
-    - 'test/controllers/sidekiq_monitoring/status_controller_test.rb'
-
-# Offense count: 1
-# Configuration parameters: CountComments.
-Metrics/MethodLength:
-  Max: 12
-
-# Offense count: 1
-Naming/AccessorMethodName:
-  Exclude:
-    - 'test/controllers/sidekiq_monitoring/status_controller_test.rb'
-
-# Offense count: 1
-# Configuration parameters: Blacklist.
-# Blacklist: END, (?-mix:EO[A-Z]{1})
-Naming/HeredocDelimiterNaming:
-  Exclude:
-    - 'sidekiq_monitoring.gemspec'
-
-# Offense count: 1
-Rails/FilePath:
-  Exclude:
-    - 'test/dummy/config/environments/development.rb'
-
-# Offense count: 6
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: strict, flexible
-Rails/TimeZone:
-  Exclude:
-    - 'app/controllers/sidekiq_monitoring/status_controller.rb'
-    - 'app/jobs/sidekiq_monitoring/refresh_status_job.rb'
-    - 'app/services/sidekiq_monitoring/status.rb'
-    - 'test/controllers/sidekiq_monitoring/status_controller_test.rb'
-    - 'test/jobs/sidekiq_monitoring/refresh_status_job_test.rb'
-    - 'test/services/sidekiq_monitoring/status_test.rb'
-
-# Offense count: 1
 Style/ClassVars:
   Exclude:
     - 'lib/sidekiq_monitoring.rb'
-
-# Offense count: 3
-Style/DateTime:
-  Exclude:
-    - 'test/controllers/sidekiq_monitoring/status_controller_test.rb'
-    - 'test/jobs/sidekiq_monitoring/refresh_status_job_test.rb'
-    - 'test/services/sidekiq_monitoring/status_test.rb'
 
 # Offense count: 2
 Style/MixinUsage:

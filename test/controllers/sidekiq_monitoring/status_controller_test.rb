@@ -8,7 +8,7 @@ module SidekiqMonitoring
 
     setup do
       @routes = Engine.routes
-      Timecop.freeze(DateTime.new(2018, 1, 22))
+      Timecop.freeze(Date.new(2018, 1, 22))
       @auth = ActionController::HttpAuthentication::Basic
               .encode_credentials('user', 'password')
     end
@@ -44,13 +44,12 @@ module SidekiqMonitoring
     end
 
     test 'response timestamps without refreshed status' do
-      get_status
+      request_status
 
-      body = JSON.parse response.body
       expected_timestamps = {
         whenever_ran:      nil,
         sidekiq_performed: nil,
-        requested:         '2018-01-22 01:00:00'
+        requested:         '2018-01-22 00:00:00'
       }.stringify_keys
       assert_equal expected_timestamps, response_body['timestamps']
     end
@@ -59,17 +58,17 @@ module SidekiqMonitoring
       perform_enqueued_jobs do
         Status.refresh
       end
-      get_status
+      request_status
 
       expected_timestamps = {
-        whenever_ran:      '2018-01-22 01:00:00',
-        sidekiq_performed: '2018-01-22 01:00:00',
-        requested:         '2018-01-22 01:00:00'
+        whenever_ran:      '2018-01-22 00:00:00',
+        sidekiq_performed: '2018-01-22 00:00:00',
+        requested:         '2018-01-22 00:00:00'
       }.stringify_keys
       assert_equal expected_timestamps, response_body['timestamps']
     end
 
-    def get_status
+    def request_status
       Sidekiq::Stats.stub(:new, OpenStruct.new(queues: {})) do
         Sidekiq::Stats::History.stub(:new, OpenStruct.new) do
           get status_url, env: { 'HTTP_AUTHORIZATION' => @auth }
