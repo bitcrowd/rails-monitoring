@@ -1,1 +1,1 @@
-Redis.current = Redis.new(SidekiqMonitoring.redis_url)
+Redis.current ||= Redis.new(SidekiqMonitoring.redis_url)
