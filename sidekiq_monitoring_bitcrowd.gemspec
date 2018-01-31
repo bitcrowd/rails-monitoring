@@ -1,7 +1,7 @@
 $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 # Maintain your gem's version:
-require 'sidekiq_monitoring/version'
+require 'sidekiq_monitoring_bitcrowd/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|

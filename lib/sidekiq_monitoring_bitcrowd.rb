@@ -1,4 +1,4 @@
-require 'sidekiq_monitoring/engine'
+require 'sidekiq_monitoring_bitcrowd/engine'
 
 module SidekiqMonitoring
   mattr_accessor :parent_controller
