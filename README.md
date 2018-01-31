@@ -9,7 +9,7 @@ running job that saves timestamps in Redis.
 
 Add gem to your project:
 
-    gem 'sidekiq_monitoring'
+    gem 'sidekiq_monitoring_bitcrowd'
 
 Mount engine in `routes.rb`:
 
