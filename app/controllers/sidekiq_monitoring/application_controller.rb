@@ -1,5 +1,5 @@
 module SidekiqMonitoring
-  class ApplicationController < ActionController::Base
+  class ApplicationController < SidekiqMonitoring.parent_controller.constantize
     protect_from_forgery with: :exception
   end
 end
