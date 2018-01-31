@@ -1,0 +1,1 @@
+class SomeController < ApplicationController; end
