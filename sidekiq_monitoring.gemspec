@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = SidekiqMonitoring::VERSION
   s.authors     = ['Julian Dobmann']
   s.email       = ['julian@bitcrowd.net']
-  s.homepage    = 'https://github.com/bitcrowd/sidekiq-monitoring'
+  s.homepage    = 'https://github.com/bitcrowd/sidekiq_monitoring'
   s.summary     = 'Provide Sidekiq status information via JSON API.'
   s.description = <<~TEXT
     Rails engine that provides a JSON API which serves Sidekiq
