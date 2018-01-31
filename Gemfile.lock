@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sidekiq_monitoring (0.1.0)
+    sidekiq_monitoring_bitcrowd (0.1.0)
       rails (>= 4.2)
       redis
       sidekiq
@@ -68,9 +68,9 @@ GEM
     method_source (0.9.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.11.1)
+    minitest (5.11.3)
     nio4r (2.2.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     parallel (1.12.1)
     parser (2.4.0.2)
@@ -119,11 +119,11 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     rubocop-bitcrowd (1.1.2)
     ruby-progressbar (1.9.0)
-    sidekiq (4.2.10)
+    sidekiq (5.0.5)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
-      redis (~> 3.2, >= 3.2.1)
+      redis (>= 3.3.4, < 5)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -150,7 +150,7 @@ DEPENDENCIES
   pry
   rubocop
   rubocop-bitcrowd
-  sidekiq_monitoring!
+  sidekiq_monitoring_bitcrowd!
   sqlite3
   timecop
 

@@ -5,7 +5,7 @@ require 'sidekiq_monitoring/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = 'sidekiq_monitoring'
+  s.name        = 'sidekiq_monitoring_bitcrowd'
   s.version     = SidekiqMonitoring::VERSION
   s.authors     = ['Julian Dobmann']
   s.email       = ['julian@bitcrowd.net']
