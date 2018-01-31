@@ -1,4 +1,4 @@
-# sidekiq_monitoring [![Build Status](https://travis-ci.org/bitcrowd/sidekiq_monitoring.svg?branch=master)](https://travis-ci.org/bitcrowd/sidekiq_monitoring)
+# sidekiq_monitoring_bitcrowd [![Build Status](https://travis-ci.org/bitcrowd/sidekiq_monitoring.svg?branch=master)](https://travis-ci.org/bitcrowd/sidekiq_monitoring)
 
 Rails engine that provides a JSON API which serves Sidekiq
 status information from a HTTP-auth protected endpoint.
