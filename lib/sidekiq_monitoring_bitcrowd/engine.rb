@@ -1,4 +1,3 @@
-require 'redis'
 require 'sidekiq'
 require 'sidekiq/api'
 
