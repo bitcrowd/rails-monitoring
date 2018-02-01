@@ -18,8 +18,8 @@ module SidekiqMonitoring
 
     def timestamps
       {
-        whenever_ran: Redis.current.get('monitoring:timestamp:whenever_ran'),
-        sidekiq_performed: Redis.current.get('monitoring:timestamp:sidekiq_performed'),
+        whenever_ran: SidekiqMonitoring.redis.get('monitoring:timestamp:whenever_ran'),
+        sidekiq_performed: SidekiqMonitoring.redis.get('monitoring:timestamp:sidekiq_performed'),
         requested: Time.current.to_s(:db)
       }
     end

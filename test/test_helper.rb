@@ -17,3 +17,4 @@ end
 
 require 'minitest/mock'
 require 'timecop'
+require 'fakeredis/minitest'

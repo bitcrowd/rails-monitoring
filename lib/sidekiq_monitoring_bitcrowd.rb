@@ -9,4 +9,12 @@ module SidekiqMonitoring
 
   mattr_accessor :http_auth_name
   mattr_accessor :http_auth_password
+
+  def self.redis
+    if SidekiqMonitoring.redis_url.present?
+      Redis.new(url: SidekiqMonitoring.redis_url)
+    else
+      Redis.current
+    end
+  end
 end

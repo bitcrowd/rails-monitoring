@@ -13,7 +13,7 @@ module SidekiqMonitoring
     test 'job' do
       connection = Minitest::Mock.new
       connection.expect(:set, true, ['monitoring:timestamp:sidekiq_performed', '2018-01-22 00:00:00'])
-      Redis.stub(:current, connection) do
+      SidekiqMonitoring.stub(:redis, connection) do
         RefreshStatusJob.perform_now
       end
     end

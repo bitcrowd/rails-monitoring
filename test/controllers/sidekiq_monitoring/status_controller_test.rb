@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'fakeredis/minitest'
 
 module SidekiqMonitoring
   class StatusControllerTest < ActionDispatch::IntegrationTest
