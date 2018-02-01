@@ -1,4 +1,6 @@
 require 'test_helper'
+require 'minitest/around/unit'
+require 'sidekiq/testing'
 
 module SidekiqMonitoring
   class StatusControllerTest < ActionDispatch::IntegrationTest
@@ -14,6 +16,17 @@ module SidekiqMonitoring
 
     teardown do
       Timecop.return
+    end
+
+    def around
+      fakeredis = Redis.new
+      connection_wrapper = lambda do |&block|
+        block.call(fakeredis)
+      end
+
+      Sidekiq.stub(:redis, connection_wrapper) do
+        yield
+      end
     end
 
     test 'response contains sidekiq status' do

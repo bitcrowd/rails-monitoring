@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sidekiq'
 
   s.add_development_dependency 'fakeredis'
+  s.add_development_dependency 'minitest-around'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'rubocop-bitcrowd'
   s.add_development_dependency 'sqlite3'
