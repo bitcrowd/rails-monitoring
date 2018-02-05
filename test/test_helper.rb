@@ -17,3 +17,18 @@ end
 
 require 'minitest/mock'
 require 'timecop'
+require 'fakeredis/minitest'
+require 'minitest/around/unit'
+
+module TestHelper
+  def self.stub_redis
+    fakeredis = Redis.new
+    connection_wrapper = lambda do |&block|
+      block.call(fakeredis)
+    end
+
+    Sidekiq.stub(:redis, connection_wrapper) do
+      yield
+    end
+  end
+end

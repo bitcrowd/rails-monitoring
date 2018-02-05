@@ -10,12 +10,17 @@ module SidekiqMonitoring
       Timecop.return
     end
 
-    test 'job' do
-      connection = Minitest::Mock.new
-      connection.expect(:set, true, ['monitoring:timestamp:sidekiq_performed', '2018-01-22 00:00:00'])
-      Redis.stub(:current, connection) do
-        RefreshStatusJob.perform_now
-      end
+    def around
+      TestHelper.stub_redis { yield }
+    end
+
+    test 'job sets timestamp in redis' do
+      fakeredis = Redis.new
+      assert_nil fakeredis.get('monitoring:timestamp:sidekiq_performed')
+
+      RefreshStatusJob.perform_now
+
+      assert_equal '2018-01-22 00:00:00', fakeredis.get('monitoring:timestamp:sidekiq_performed')
     end
   end
 end

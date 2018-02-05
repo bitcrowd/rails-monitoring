@@ -12,13 +12,18 @@ module SidekiqMonitoring
       Timecop.return
     end
 
+    def around
+      TestHelper.stub_redis { yield }
+    end
+
     test 'writes timestamp to redis and schedules job' do
+      fakeredis = Redis.new
+      assert_nil fakeredis.get('monitoring:timestamp:whenever_ran')
+
       assert_enqueued_with(job: RefreshStatusJob) do
-        connection = Minitest::Mock.new
-        connection.expect(:set, true, ['monitoring:timestamp:whenever_ran', '2018-01-22 00:00:00'])
-        Redis.stub(:current, connection) do
-          Status.refresh
-        end
+        Status.refresh
+
+        assert_equal '2018-01-22 00:00:00', fakeredis.get('monitoring:timestamp:whenever_ran')
       end
     end
   end
