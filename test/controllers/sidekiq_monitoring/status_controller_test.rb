@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/around/unit'
 require 'sidekiq/testing'
 
 module SidekiqMonitoring
@@ -19,14 +18,7 @@ module SidekiqMonitoring
     end
 
     def around
-      fakeredis = Redis.new
-      connection_wrapper = lambda do |&block|
-        block.call(fakeredis)
-      end
-
-      Sidekiq.stub(:redis, connection_wrapper) do
-        yield
-      end
+      TestHelper.stub_redis { yield }
     end
 
     test 'response contains sidekiq status' do
