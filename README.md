@@ -9,31 +9,40 @@ running job that saves timestamps in Redis.
 
 Add gem to your project:
 
-    gem 'sidekiq_monitoring_bitcrowd'
+```ruby
+gem 'sidekiq_monitoring_bitcrowd'
+```
 
 Mount engine in `routes.rb`:
-
-    Rails.application.routes.draw do
-      mount SidekiqMonitoring::Engine => '/sidekiq_monitoring'
-    end
+```ruby
+Rails.application.routes.draw do
+  mount SidekiqMonitoring::Engine => '/sidekiq_monitoring'
+end
+```
 
 Schedule job in `whenever`'s `schedule.rb`:
 
-    every 5.minutes do
-      runner 'SidekiqMonitoring::Status.refresh'
-    end
+```ruby
+every 5.minutes do
+  runner 'SidekiqMonitoring::Status.refresh'
+end
+```
 
 Be sure that your parent app provides HTTP basic authentication credentials
 using an initializer
 
-    # app/config/initializers/sidekiq_monitoring.rb
-    SidekiqMonitoring.http_auth_name = 'user'
-    SidekiqMonitoring.http_auth_password = 'password'
+```ruby
+# app/config/initializers/sidekiq_monitoring.rb
+SidekiqMonitoring.http_auth_name = 'user'
+SidekiqMonitoring.http_auth_password = 'password'
+```
 
 This engine's controller inherits from `ApplicationController` by default. You
 can change this using the `parent_controller` option
 
-    SidekiqMonitoring.parent_controller = 'SomeOtherController'
+```ruby
+SidekiqMonitoring.parent_controller = 'SomeOtherController'
+```
 
 ## Usage
 
