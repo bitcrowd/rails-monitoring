@@ -1,6 +1,6 @@
-# sidekiq_monitoring_bitcrowd [![Build Status](https://travis-ci.org/bitcrowd/sidekiq_monitoring.svg?branch=master)](https://travis-ci.org/bitcrowd/sidekiq_monitoring)
+# rails-monitoring[![Build Status](https://travis-ci.org/bitcrowd/rails-monitoring.svg?branch=master)](https://travis-ci.org/bitcrowd/rails-monitoring)
 
-Rails engine that provides a JSON API which serves Sidekiq
+Rails engine that provides a JSON API which serves Sidekiq and Whenever
 status information from a HTTP-auth protected endpoint.
 This status information is gathered by scheduling a frequently
 running job that saves timestamps in Redis.
@@ -10,13 +10,13 @@ running job that saves timestamps in Redis.
 Add gem to your project:
 
 ```ruby
-gem 'sidekiq_monitoring_bitcrowd'
+gem 'rails-monitoring'
 ```
 
 Mount engine in `routes.rb`:
 ```ruby
 Rails.application.routes.draw do
-  mount SidekiqMonitoring::Engine => '/sidekiq_monitoring'
+  mount Rails::Monitoring::Engine => '/monitoring'
 end
 ```
 
@@ -24,7 +24,7 @@ Schedule job in `whenever`'s `schedule.rb`:
 
 ```ruby
 every 5.minutes do
-  runner 'SidekiqMonitoring::Status.refresh'
+  runner 'Rails::Monitoring::Status.refresh'
 end
 ```
 
@@ -32,21 +32,21 @@ Be sure that your parent app provides HTTP basic authentication credentials
 using an initializer
 
 ```ruby
-# app/config/initializers/sidekiq_monitoring.rb
-SidekiqMonitoring.http_auth_name = 'user'
-SidekiqMonitoring.http_auth_password = 'password'
+# app/config/initializers/monitoring.rb
+Rails::Monitoring.http_auth_name = 'user'
+Rails::Monitoring.http_auth_password = 'password'
 ```
 
 This engine's controller inherits from `ApplicationController` by default. You
 can change this using the `parent_controller` option
 
 ```ruby
-SidekiqMonitoring.parent_controller = 'SomeOtherController'
+Rails::Monitoring.parent_controller = 'SomeOtherController'
 ```
 
 ## Usage
 
-Navigate to `/sidekiq_monitoring/status` and receive Sidekiq status information:
+Navigate to `/monitoring/status` and receive Sidekiq status information:
 
     {
       "timestamps": {

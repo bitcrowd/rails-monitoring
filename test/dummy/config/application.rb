@@ -3,7 +3,7 @@ require_relative 'boot'
 require 'rails/all'
 
 Bundler.require(*Rails.groups)
-require 'sidekiq_monitoring_bitcrowd'
+require 'rails/monitoring'
 
 module Dummy
   class Application < Rails::Application

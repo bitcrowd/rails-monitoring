@@ -1,18 +1,18 @@
 $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 # Maintain your gem's version:
-require 'sidekiq_monitoring_bitcrowd/version'
+require 'rails/monitoring/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = 'sidekiq_monitoring_bitcrowd'
-  s.version     = SidekiqMonitoring::VERSION
+  s.name        = 'rails-monitoring'
+  s.version     = Rails::Monitoring::VERSION
   s.authors     = ['Julian Dobmann']
   s.email       = ['julian@bitcrowd.net']
-  s.homepage    = 'https://github.com/bitcrowd/sidekiq_monitoring'
-  s.summary     = 'Provide Sidekiq status information via JSON API.'
+  s.homepage    = 'https://github.com/bitcrowd/rails-monitoring'
+  s.summary     = 'Provide Rails status information via JSON API.'
   s.description = <<~TEXT
-    Rails engine that provides a JSON API which serves Sidekiq
+    Rails engine that provides a JSON API which serves Sidekiq and Whenever
     status information from a HTTP-auth protected endpoint.
     This status information is gathered by scheduling a frequently
     running job that saves timestamps in Redis.
