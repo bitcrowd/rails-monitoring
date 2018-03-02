@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sidekiq_monitoring_bitcrowd (0.2.0)
+    rails-monitoring (0.2.0)
       rails (>= 4.2)
       sidekiq
 
@@ -150,9 +150,9 @@ DEPENDENCIES
   fakeredis
   minitest-around
   pry
+  rails-monitoring!
   rubocop
   rubocop-bitcrowd
-  sidekiq_monitoring_bitcrowd!
   sqlite3
   timecop
 

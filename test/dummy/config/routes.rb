@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount SidekiqMonitoring::Engine => '/sidekiq_monitoring'
+  mount Rails::Monitoring::Engine => '/monitoring'
 end
