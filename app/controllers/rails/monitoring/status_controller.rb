@@ -22,7 +22,7 @@ module Rails
           {
             whenever_ran: conn.get('monitoring:timestamp:whenever_ran'),
             sidekiq_performed: conn.get('monitoring:timestamp:sidekiq_performed'),
-            requested: Time.current.to_s(:db)
+            requested: Time.current.to_formatted_s(:iso8601)
           }
         end
       end

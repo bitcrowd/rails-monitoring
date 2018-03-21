@@ -54,7 +54,7 @@ module Rails
         expected_timestamps = {
           whenever_ran:      nil,
           sidekiq_performed: nil,
-          requested:         '2018-01-22 00:00:00'
+          requested:         '2018-01-22T00:00:00Z'
         }.stringify_keys
         assert_equal expected_timestamps, response_body['timestamps']
       end
@@ -66,9 +66,9 @@ module Rails
         request_status
 
         expected_timestamps = {
-          whenever_ran:      '2018-01-22 00:00:00',
-          sidekiq_performed: '2018-01-22 00:00:00',
-          requested:         '2018-01-22 00:00:00'
+          whenever_ran:      '2018-01-22T00:00:00Z',
+          sidekiq_performed: '2018-01-22T00:00:00Z',
+          requested:         '2018-01-22T00:00:00Z'
         }.stringify_keys
         assert_equal expected_timestamps, response_body['timestamps']
       end
