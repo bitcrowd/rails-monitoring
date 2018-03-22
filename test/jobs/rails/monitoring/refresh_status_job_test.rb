@@ -21,7 +21,7 @@ module Rails
 
         RefreshStatusJob.perform_now
 
-        assert_equal '2018-01-22 00:00:00', fakeredis.get('monitoring:timestamp:sidekiq_performed')
+        assert_equal '2018-01-22T00:00:00Z', fakeredis.get('monitoring:timestamp:sidekiq_performed')
       end
     end
   end
