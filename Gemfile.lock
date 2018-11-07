@@ -59,7 +59,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -71,7 +71,7 @@ GEM
     minitest-around (0.4.1)
       minitest (~> 5.0)
     nio4r (2.3.0)
-    nokogiri (1.8.2)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     parallel (1.12.1)
     parser (2.5.0.5)
@@ -157,4 +157,4 @@ DEPENDENCIES
   timecop
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
