@@ -29,7 +29,6 @@ jobs:
       - run:
           name: Database Setup
           command: |
-            bundle exec rails db:drop || true
             bundle exec rails db:create db:migrate
       - run:
           name: rake test
