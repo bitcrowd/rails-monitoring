@@ -1,4 +1,4 @@
-# rails-monitoring[![Build Status](https://travis-ci.org/bitcrowd/rails-monitoring.svg?branch=master)](https://travis-ci.org/bitcrowd/rails-monitoring)
+# rails-monitoring
 
 Rails engine that provides a JSON API which serves Sidekiq and Whenever
 status information from a HTTP-auth protected endpoint.
