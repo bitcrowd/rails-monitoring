@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'minitest-around'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'rubocop-bitcrowd'
+  s.add_development_dependency 'rubocop-rails'
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'timecop'
 end
