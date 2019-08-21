@@ -85,3 +85,11 @@ Navigate to `/monitoring/status` and receive Sidekiq status information:
         }
       }
     }
+
+## Development
+
+Run tests with
+
+```sh
+bundle exec rake test
+```
