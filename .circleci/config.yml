@@ -5,25 +5,13 @@ references:
       - image: circleci/ruby:2.6.3
         environment:
           RAILS_ENV: test
-          PGHOST: 127.0.0.1
-          PGUSER: bitcrowd
-          DATABASE_URL: "postgres://bitcrowd@localhost:5432/bitcrowd_test"
-          COVERAGE: 'true'
           BUNDLE_PATH: '~/bitcrowd/vendor/bundle'
-          DISPLAY: 99.0
-          CAPYBARA_WAIT_TIME: 40
-      - image: circleci/postgres:9.6.12-alpine
-        environment:
-          POSTGRES_USER: bitcrowd
-          POSTGRES_DB: bitcrowd_test
     working_directory: ~/bitcrowd
 jobs:
-  setup:
+  tests:
     <<: *base
     steps:
       - checkout
-
-      # ruby dependencies
       - restore_cache:
           keys:
             - bundler-cache-v1-{{ checksum "Gemfile.lock" }}
@@ -34,6 +22,19 @@ jobs:
           command: |
             bundle check || bundle install --jobs 4 --retry 3
             bundle clean
+      - run:
+          name: rubocop
+          command: |
+            bundle exec rubocop
+      - run:
+          name: Database Setup
+          command: |
+            bundle exec rails db:drop || true
+            bundle exec rails db:create db:migrate
+      - run:
+          name: rake test
+          command: |
+            bundle exec rake test
       - save_cache:
           key: bundler-cache-v1-{{ checksum "Gemfile.lock" }}
           paths:
@@ -43,37 +44,9 @@ jobs:
           key: repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - ~/bitcrowd
-  test:
-    <<: *base
-    steps:
-      - restore_cache:
-          key: repo-{{ .Environment.CIRCLE_SHA1 }}
-      - run: 
-          name: Install postgresql-client
-          command: |
-            sudo apt-get update
-            sudo apt install -y postgresql-client
-      - run:
-          name: rubocop
-          command: |
-            bundle exec rubocop
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
-          name: Database Setup
-          command: |
-            bundle exec rails db:drop || true
-            bundle exec rails db:create db:schema:load
-      - run:
-          name: rake test
-          command: |
-            bundle exec rake test
+
 workflows:
   version: 2
   checks:
     jobs:
-      - setup
-      - test:
-          requires:
-            - setup
+      - tests
