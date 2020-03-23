@@ -11,6 +11,10 @@
 
 * 
 
+## 0.3.1 / 2020-03-23
+
+### Security
+* Bump actionview (GHSA-65cv-r6x7-79hv)
 
 ## 0.3.0 / 2019-08-21
 
