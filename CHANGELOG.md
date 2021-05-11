@@ -11,9 +11,16 @@
 
 * 
 
+## 0.3.2 / 2021-05-11
+
+### Security 
+
+* Bump actionpack (CVE-2021-22904, CVE-2021-22885)
+
 ## 0.3.1 / 2020-03-23
 
 ### Security
+
 * Bump actionview (GHSA-65cv-r6x7-79hv)
 
 ## 0.3.0 / 2019-08-21
